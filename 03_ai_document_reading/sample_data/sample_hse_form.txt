@@ -1,0 +1,115 @@
+═════════════════════════════════════════════════════════════════
+              HSE INCIDENT REPORTING FORM 02-A
+═════════════════════════════════════════════════════════════════
+
+INCIDENT ID:        IR-2026-0094
+REPORTING DATE:     14 May 2026
+REPORTING TIME:     09:15
+
+═════════════════════════════════════════════════════════════════
+1. INCIDENT IDENTIFICATION
+
+DATE & TIME OF INCIDENT:     13 May 2026, approximately 22:35
+LOCATION (SITE):             Refinery Block-C, Tank Farm Section 4
+SPECIFIC LOCATION:           Outdoor pump skid near Tank T-104
+EQUIPMENT INVOLVED:          Centrifugal transfer pump P-204
+SHIFT IN PROGRESS:           Night shift (B-shift)
+WEATHER CONDITIONS:          Light rain, ambient temp 28°C, wind SE 12 km/h
+
+═════════════════════════════════════════════════════════════════
+2. PEOPLE INVOLVED
+
+PERSON 1:    Role: Senior Pump Operator   (15 years experience)
+             Status: Witness; no injury
+PERSON 2:    Role: Junior Helper          (2 years experience)
+             Status: Witness; no injury
+
+CONTRACTORS PRESENT: 2 (cleaning subcontractor, evacuated within 6 minutes)
+WITNESSES (total):   2 employees + 2 contractors
+
+NO INJURIES SUSTAINED.
+
+═════════════════════════════════════════════════════════════════
+3. SEQUENCE OF EVENTS (as recounted by Senior Pump Operator)
+
+22:30  - Routine round through tank farm; pump P-204 operating normally
+22:34  - Hissing sound noticed near pump mechanical seal area
+22:35  - Visible mist/leak from gland packing; smell of hydrocarbon strong
+22:36  - Pump tripped on high vibration (automatic protection)
+22:37  - Operator radioed control room; isolation initiated
+22:41  - Isolation valves V-204-IN and V-204-OUT closed by control room
+22:42  - Foam application initiated as precaution
+22:44  - LEL reading dropped to safe levels
+22:50  - Area secured; contractors evacuated; HSE on-site supervisor notified
+23:15  - HSE on-site supervisor arrived; full investigation initiated
+
+ESTIMATED RELEASE:    Approximately 30-50 litres of hydrocarbon
+CONTAINMENT:          Within bund wall; no off-site impact
+ENVIRONMENTAL IMPACT: Minor (contained on hard standing; absorbent material applied)
+
+═════════════════════════════════════════════════════════════════
+4. IMMEDIATE ACTIONS TAKEN
+
+- Pump P-204 isolated and tagged out
+- Foam blanket applied
+- Contractors evacuated to muster point; head count confirmed
+- LEL monitoring continuous for next 4 hours
+- Spillage collected using absorbent pads
+- Pump physically inspected at first light (14 May 06:00)
+- Maintenance work order WO-2026-3401 raised for mechanical seal replacement
+- Hot work permits suspended in Section 4 pending area clearance
+- Toolbox talk delivered to crew at 08:00 morning shift handover
+
+═════════════════════════════════════════════════════════════════
+5. PRELIMINARY ROOT CAUSE ASSESSMENT
+
+INITIAL HYPOTHESIS: Mechanical seal failure on pump P-204
+
+Contributing factors (initial):
+- Last preventive maintenance on pump P-204: 11 months ago (scheduled 6-monthly)
+- Vibration trend over last 4 weeks showed gradual increase — alert threshold 
+  was reached but not flagged in CMMS
+- Light rain and humidity may have contributed to early-warning visual signs 
+  being less obvious in the dark
+
+═════════════════════════════════════════════════════════════════
+6. SELF-CLASSIFIED SEVERITY
+
+  Reporting Supervisor's classification:   Category 3 (Near-Miss — Minor)
+
+REASONING: No injury, no environmental release outside bund, equipment failure 
+of single pump only, isolation worked correctly, no ignition source involved.
+
+═════════════════════════════════════════════════════════════════
+7. REGULATORY CONSIDERATIONS (per supervisor's initial view)
+
+- OGRA Section 26 disclosure: To be assessed — supervisor unclear on threshold
+- PEPA notification: Not triggered (no off-site release)
+- Internal escalation: GM Operations briefed verbally at 09:00, 14 May
+
+═════════════════════════════════════════════════════════════════
+8. NEXT STEPS
+
+- Detailed root-cause analysis to be initiated by Reliability team
+- Metallurgical analysis of failed seal pending
+- Review of vibration-monitoring alert thresholds across pump fleet
+- Review of preventive maintenance compliance across rotating equipment
+- Toolbox talk on early-warning indicators for crew within 7 days
+
+═════════════════════════════════════════════════════════════════
+SUBMITTED BY:    [SHIFT-SUPERVISOR]
+DATE:            14 May 2026
+TIME:            09:15
+
+REVIEWED BY:     [HSE-OFFICER-ON-DUTY]
+DATE:            14 May 2026
+TIME:            10:30
+
+═════════════════════════════════════════════════════════════════
+NOTES (for training):
+- This form is fictional and anonymised.
+- Use for AI extraction practice — particularly severity reconciliation.
+- AI may reasonably suggest Category 2 (not Category 3) given the LEL 
+  monitoring, foam application, and contractor evacuation — that disagreement 
+  is the point of the exercise.
+═════════════════════════════════════════════════════════════════

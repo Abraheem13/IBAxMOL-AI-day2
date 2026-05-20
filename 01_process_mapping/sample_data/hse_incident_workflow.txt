@@ -1,0 +1,83 @@
+HSE INCIDENT NOTIFICATION WORKFLOW
+========================================
+Scope: from incident detection to OGRA Section 26 disclosure
+Anonymised for training. Placeholders: [SITE], [ASSET-X], [TECH-A].
+
+STEP 1 — Incident occurs
+- Could be: gas release, leak, fire, slip-trip-fall, near-miss, environmental release.
+- Detection methods: gas detector alarm, visual observation, operator report, 
+  contractor report.
+
+STEP 2 — Immediate response
+- Shift Supervisor or Control Room notified within minutes.
+- Personnel evacuation if needed; isolation actions; emergency response team mobilised.
+
+STEP 3 — Initial assessment by Shift Supervisor
+- Severity classification (preliminary): Category 1 / 2 / 3 / Near-Miss.
+- Verbal escalation to HSE Officer on duty.
+
+STEP 4 — HSE Officer on-site
+- Arrives within 30 minutes (target).
+- Photographs scene, interviews witnesses, takes initial readings.
+- Initiates internal incident form 02-A (currently paper or PDF).
+
+STEP 5 — Internal incident form lodged
+- Form fields: date/time, location, persons involved, sequence of events, 
+  immediate actions, witnesses, attachments.
+- Lodged in HSE incident register (often Excel-based with macro tracking).
+
+STEP 6 — Severity confirmation
+- HSE Manager reviews initial form; confirms or adjusts severity classification.
+- Determines whether OGRA Section 26 disclosure is triggered.
+
+STEP 7 — Verbal briefing to GM Operations
+- Same-day verbal briefing.
+- Often via phone or in-person; not always recorded.
+
+STEP 8 — Written briefing to GM Operations + Director (HSE)
+- Within 24 hours.
+- Word document, distributed by email.
+
+STEP 9 — Investigation team formed (if Category 2 or higher)
+- Lead investigator named.
+- Witness interview schedule prepared.
+- Evidence-preservation protocol initiated.
+
+STEP 10 — Root-cause investigation
+- 5-Whys, fishbone (Ishikawa), barrier analysis.
+- Time: 3-10 days depending on severity.
+
+STEP 11 — OGRA Section 26 disclosure preparation
+- Drafted by Compliance Officer based on investigation findings.
+- Reviewed by HSE Manager, GM Operations, Legal.
+- Approved by Director or designated authority.
+- Submitted within 48 hours (per regulation).
+
+STEP 12 — CAPA plan
+- Corrective actions and preventive actions identified.
+- Each action: owner, target date, verification method.
+- Logged in CAPA tracker (often Excel or in CMMS).
+
+STEP 13 — CAPA execution
+- Owners execute their actions.
+- Status reviewed weekly until closure.
+
+STEP 14 — CAPA verification
+- HSE auditor verifies each closed action.
+- Sign-off recorded in tracker.
+
+STEP 15 — Lessons-learned brief
+- Compiled by HSE Manager.
+- Circulated to all sites within 14 days.
+- Toolbox-talk material prepared.
+
+STEP 16 — Incident closure
+- All CAPA actions verified, lessons circulated, OGRA filing acknowledged.
+- Incident marked closed in register.
+
+========================================
+PROCESS METRICS
+- Frequency: 30-60 minor incidents/month; 2-5 reportable/month for medium operator
+- Average cycle (Cat 2): 30-45 days from incident to closure
+- Step 11 (OGRA disclosure prep) often runs to 36-44 hours within the 48-hour window
+- Reminders are heavy: most slippage is in Step 13 (CAPA execution by named owners)

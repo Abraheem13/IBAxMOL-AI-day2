@@ -1,0 +1,77 @@
+VENDOR INVOICE TO PAYMENT WORKFLOW
+========================================
+Scope: routine vendor invoice processing for goods/services
+Anonymised. Placeholders: [VENDOR-X], [INVOICE-N], [AMOUNT].
+
+STEP 1 — Vendor issues invoice
+- Vendor prepares invoice referencing PO + GRN + tax certificate.
+
+STEP 2 — Invoice receipt at AP department
+- Receipt channels (multiple, inconsistent): email PDF, paper hand-delivery, 
+  email body text, vendor portal upload, occasionally WhatsApp photo.
+- AP Clerk catalogues in incoming-invoice register.
+
+STEP 3 — Three-way match (PO + GRN + Invoice)
+- AP Clerk opens SAP, retrieves PO and GRN, compares against invoice line by line:
+  vendor, item description, quantity, unit price, total, tax, currency.
+- Variances flagged.
+- Time per invoice: 5-15 minutes for clean; 30-60 minutes for variance.
+
+STEP 4 — Withholding tax determination
+- Vendor's WHT category looked up in master data (sometimes outdated).
+- Applicable tax rate applied per FBR schedule.
+- WHT certificate prepared for vendor on payment.
+
+STEP 5 — Invoice posted to SAP
+- AP Clerk creates payable entry.
+
+STEP 6 — Budget-holder approval
+- Routed to Budget Holder / Project Manager via SAP workflow OR via email.
+- SLA target: 48 hours. Actual: often 5-7 days. Frequent reminders.
+
+STEP 7 — AP Supervisor verification
+- Verifies match, tax, posting accuracy.
+
+STEP 8 — Finance Manager approval
+- Approves for payment scheduling.
+
+STEP 9 — Payment scheduling
+- Treasury determines payment date per terms (typically 30-90 days from invoice).
+- Cash position reviewed.
+
+STEP 10 — Payment file generation
+- Bank-specific payment file generated (often Excel/CSV exported from SAP, then 
+  formatted to bank template).
+- Frequency: typically weekly batch.
+
+STEP 11 — Bank file submission
+- Treasury uploads to bank portal (HBL, MCB, Bank Alfalah, etc.) or sends to bank 
+  relationship manager.
+- Manual verification + sign-off by authorised signatory.
+
+STEP 12 — Payment execution
+- Bank processes; payment hits vendor account.
+- Bank confirmation received.
+
+STEP 13 — Vendor remittance advice
+- AP sends remittance advice to vendor with payment ref, amount, invoices paid.
+- Format: emailed PDF or Word document.
+
+STEP 14 — Tax certificate to vendor
+- WHT certificate generated and sent (separately or with remittance advice).
+
+STEP 15 — GL posting
+- Payment entry reconciled in GL.
+- AP balance cleared.
+
+STEP 16 — Audit log update
+- Audit trail captured: who approved, when, supporting documents archived.
+
+========================================
+PROCESS METRICS (typical for medium operator)
+- Frequency: 200-600 vendor invoices/month
+- Human-hour cost per invoice: 25-45 minutes across roles
+- Cycle time (clean invoice): 35-50 days
+- Cycle time (variance/exception): 60-90 days
+- Manager approval delay (Step 6) often 30-40% of total cycle time
+- Bank file errors: ~5% of batches require correction

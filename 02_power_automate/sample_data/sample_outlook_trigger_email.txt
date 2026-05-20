@@ -1,0 +1,44 @@
+SUBJECT: Invoice INV-2026-0487 — [VENDOR-X] — Monthly Service Charges April 2026
+=====================================================================
+FROM: ap@[vendor-x].com.pk
+TO: accountspayable@[operator].com.pk
+DATE: Friday, 12:34
+ATTACHMENTS: invoice_INV-2026-0487.pdf, tax_certificate_Q2.pdf
+
+------ Email body ------
+
+Dear Accounts Payable Team,
+
+Please find attached our invoice INV-2026-0487 for the monthly maintenance services 
+rendered under PO #PO-2026-1187 for the period 01 April to 30 April 2026.
+
+Invoice details:
+• PO Reference: PO-2026-1187
+• GRN Reference: GRN-2026-0512
+• Service Period: April 2026
+• Sub-total: PKR [AMOUNT-1]
+• Sales Tax (17%): PKR [AMOUNT-2]
+• Total Payable: PKR [AMOUNT-3]
+• Payment terms: 30 days net
+• Banking details: as per master record
+
+Tax certificate for the quarter is also attached for your records.
+
+Kindly process the payment at your earliest convenience. For any clarifications, 
+please contact our finance team at the email above.
+
+Best regards,
+[NAME], Accounts Manager
+[VENDOR-X] Services (Pvt) Ltd.
+
+=====================================================================
+
+[USE FOR LAB: this email is the typical trigger for the Outlook-Trigger flow.
+The expected automation:
+1. Saves both PDFs to SharePoint Vendor Invoices Library
+2. Logs subject/sender/date to Invoice Tracker list
+3. Notifies #finance Teams channel
+4. Marks email as read
+
+Send this email content to your test inbox (or send yourself a similar one with 
+PDFs attached) to test your Outlook-trigger flow.]

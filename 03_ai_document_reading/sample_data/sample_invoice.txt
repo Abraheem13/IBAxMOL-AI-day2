@@ -1,0 +1,83 @@
+═════════════════════════════════════════════════════════════════
+                       TAX INVOICE
+═════════════════════════════════════════════════════════════════
+
+INVOICE NUMBER:    INV-2026-0487
+INVOICE DATE:      14 April 2026
+DUE DATE:          14 May 2026 (30 days net)
+
+═════════════════════════════════════════════════════════════════
+FROM (Supplier):
+
+[VENDOR-X] Maintenance Services (Pvt) Ltd.
+Plot 47, [INDUSTRIAL-AREA]
+[CITY], Pakistan
+Phone: +92-21-[NUMBER]
+NTN: 1234567-8
+STRN: 0712345-67890-5
+Bank: [BANK-A] · A/C ending ****4521 · Branch [BRANCH-CODE]
+
+═════════════════════════════════════════════════════════════════
+TO (Bill To):
+
+[OPERATOR-PK] Limited
+Accounts Payable Department
+Refinery Site, [CITY], Pakistan
+NTN: 8765432-1
+
+═════════════════════════════════════════════════════════════════
+PO REFERENCE:      PO-2026-1187
+GRN REFERENCE:     GRN-2026-0512
+CONTRACT REF:      MSA-2024-074 (Master Service Agreement)
+SERVICE PERIOD:    01 April 2026 to 30 April 2026
+
+═════════════════════════════════════════════════════════════════
+LINE ITEMS:
+─────────────────────────────────────────────────────────────────
+# | DESCRIPTION                            | QTY | UNIT PRICE | TOTAL
+─────────────────────────────────────────────────────────────────
+1 | Monthly preventive maintenance —        |  1  | 685,000.00 | 685,000.00
+  | rotating equipment package              |     |            |
+─────────────────────────────────────────────────────────────────
+2 | Vibration analysis services — 12 units  | 12  |  18,500.00 | 222,000.00
+─────────────────────────────────────────────────────────────────
+3 | Reactive maintenance call-outs           |  3  |  47,500.00 | 142,500.00
+  | (April 03, April 17, April 24)          |     |            |
+─────────────────────────────────────────────────────────────────
+4 | Spare parts consumed (per Annex A)       |  -  |     -      |  88,200.00
+─────────────────────────────────────────────────────────────────
+5 | Field engineer overtime (28 hours)       | 28  |   3,200.00 |  89,600.00
+─────────────────────────────────────────────────────────────────
+
+═════════════════════════════════════════════════════════════════
+                                  SUBTOTAL:    PKR 1,227,300.00
+                                  SALES TAX (17%): PKR 208,641.00
+                                  WHT (8% — applicable): PKR (98,184.00)
+                                  ─────────────────────────────────
+                                  NET PAYABLE:   PKR 1,337,757.00
+═════════════════════════════════════════════════════════════════
+
+PAYMENT TERMS:
+- 30 days net from invoice date
+- Wire transfer to bank account specified above
+- Reference INV-2026-0487 in payment narrative
+
+BANK DETAILS:
+  Bank Name: [BANK-A]
+  Account Title: [VENDOR-X] Maintenance Services (Pvt) Ltd.
+  Account Number: ****4521
+  IBAN: PK00[BANK-A]0000000000004521
+  Branch: [BRANCH-CODE]
+
+═════════════════════════════════════════════════════════════════
+SIGNATURE: ________________________
+NAME:      [VENDOR-AUTHORISED-SIGNATORY]
+TITLE:     Finance Manager
+DATE:      14 April 2026
+COMPANY STAMP:
+═════════════════════════════════════════════════════════════════
+
+NOTES:
+- This is a fictional, anonymised invoice for training purposes.
+- Annex A (spare parts detail) referenced but not included in this sample.
+- For Power Automate / AI Builder extraction practice.

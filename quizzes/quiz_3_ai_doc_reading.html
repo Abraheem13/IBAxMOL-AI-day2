@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz 3 — AI Document Reading & Classification</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; margin: 0; background: linear-gradient(135deg, #0F4C5C 0%, #1F7A8C 100%); min-height: 100vh; padding: 30px 16px; color: #1a1a1a; }
+  .container { max-width: 820px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.18); overflow: hidden; }
+  header { background: #0F4C5C; color: #fff; padding: 28px 32px; }
+  header h1 { margin: 0 0 6px 0; font-size: 22px; }
+  header p { margin: 0; opacity: 0.85; font-size: 14px; }
+  .main { padding: 28px 32px; }
+  .progress-bar { background: #e5e7eb; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 28px; }
+  .progress-fill { background: #0F4C5C; height: 100%; width: 0%; transition: width 0.4s ease; }
+  .question { display: none; animation: fadeIn 0.4s ease; }
+  .question.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .q-meta { color: #6b7280; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .q-text { font-size: 18px; font-weight: 600; margin: 0 0 6px 0; color: #111; }
+  .options { margin: 0; padding: 0; list-style: none; }
+  .option { background: #fff; border: 2px solid #e5e7eb; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: all 0.18s ease; font-size: 15px; line-height: 1.45; user-select: none; }
+  .option:hover { border-color: #1F7A8C; background: #f0fafe; }
+  .option.selected { border-color: #1F7A8C; background: #e0f5fa; }
+  .option.correct { border-color: #16a34a; background: #dcfce7; cursor: default; }
+  .option.wrong { border-color: #dc2626; background: #fee2e2; cursor: default; }
+  .option.disabled { cursor: default; opacity: 0.7; }
+  .feedback { margin-top: 14px; padding: 14px 16px; border-radius: 8px; font-size: 14px; line-height: 1.55; display: none; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+  .feedback.wrong { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+  .feedback strong { display: block; margin-bottom: 4px; }
+  .nav { display: flex; justify-content: space-between; margin-top: 24px; gap: 12px; }
+  button { background: #0F4C5C; color: #fff; border: 0; padding: 11px 22px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.18s ease; }
+  button:hover:not(:disabled) { background: #1F7A8C; transform: translateY(-1px); }
+  button:disabled { background: #9ca3af; cursor: not-allowed; }
+  button.secondary { background: #e5e7eb; color: #374151; }
+  button.secondary:hover:not(:disabled) { background: #d1d5db; transform: translateY(-1px); }
+  .results { text-align: center; padding: 30px 20px; display: none; }
+  .results.show { display: block; }
+  .score-circle { width: 140px; height: 140px; border-radius: 50%; background: linear-gradient(135deg, #0F4C5C, #1F7A8C); color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(15,76,92,0.3); }
+  .score-circle .pct { font-size: 36px; font-weight: 700; }
+  .score-circle .frac { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+  .results h2 { margin: 0 0 8px 0; color: #111; }
+  .results .verdict { color: #4b5563; font-size: 15px; margin-bottom: 20px; }
+  .review { text-align: left; background: #f9fafb; border-radius: 8px; padding: 16px 20px; margin-top: 18px; font-size: 14px; }
+  .review h3 { margin: 0 0 10px 0; font-size: 15px; color: #374151; }
+  .review-item { padding: 8px 0; border-bottom: 1px solid #e5e7eb; display: flex; align-items: flex-start; gap: 10px; }
+  .review-item:last-child { border-bottom: 0; }
+  .review-mark { font-size: 18px; flex-shrink: 0; line-height: 1.3; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Quiz 3 — AI Document Reading &amp; Classification</h1>
+    <p>10 questions · Tests your understanding of Module 03 · No time limit</p>
+  </header>
+  <div class="main">
+    <div class="progress-bar"><div class="progress-fill" id="bar"></div></div>
+    <div id="quiz"></div>
+    <div class="results" id="results">
+      <div class="score-circle"><div class="pct" id="scorePct">0%</div><div class="frac" id="scoreFrac">0 / 10</div></div>
+      <h2 id="verdictTitle">Well done</h2>
+      <div class="verdict" id="verdictText"></div>
+      <div class="review"><h3>Question Review</h3><div id="reviewList"></div></div>
+      <button onclick="restart()" style="margin-top: 20px;">Try Again</button>
+    </div>
+  </div>
+</div>
+<script>
+const questions = [
+  {
+    q: "AI Builder's 'Process and save information from invoices' action sits inside which Microsoft service?",
+    options: [
+      "Microsoft Word",
+      "Power Automate (Premium licence required)",
+      "Excel",
+      "Outlook"
+    ],
+    correct: 1,
+    explain: "AI Builder is a Premium add-on to Power Automate. Pre-trained models for invoices, receipts, business cards, OCR, sentiment. Costs ~$500/month for 1M credits."
+  },
+  {
+    q: "Your AI extraction returns total_amount=PKR 1,337,757 but the corresponding PO is PKR 1,150,000. What should the flow do?",
+    options: [
+      "Auto-approve — close enough.",
+      "Route the invoice to AP Supervisor for variance investigation; do NOT auto-approve.",
+      "Auto-reject and delete.",
+      "Pay both amounts."
+    ],
+    correct: 1,
+    explain: "Variance (>2-5%) is always a human-review case. The whole point of AI extraction is to surface exceptions for human attention — never to auto-approve them. Build the variance-investigation queue."
+  },
+  {
+    q: "The MOST important field to include in any AI-extraction prompt is:",
+    options: [
+      "An emoji request",
+      "A confidence score and an instruction to use placeholders/null for missing fields rather than inventing them",
+      "A request for poetry",
+      "An apology"
+    ],
+    correct: 1,
+    explain: "Confidence + anti-hallucination is the foundation. Without these, the AI fills missing fields with plausible-sounding guesses. With them, missing fields stay marked as missing — and you can route exceptions to humans correctly."
+  },
+  {
+    q: "A field operator submits an HSE form classifying an incident as Category 3 (minor near-miss). The AI extraction routine suggests Category 2 instead. Right action?",
+    options: [
+      "Trust the field operator; ignore the AI.",
+      "Trust the AI; auto-update the classification.",
+      "Flag the discrepancy for HSE Manager mandatory review with both classifications and reasoning visible.",
+      "Average them — call it Category 2.5."
+    ],
+    correct: 2,
+    explain: "Severity discrepancies are exactly the high-value flag AI can produce. Never auto-override the field reporter (they may have context AI doesn't). Never ignore the AI (it may have spotted something the supervisor missed). Route to HSE Manager — that's the human checkpoint."
+  },
+  {
+    q: "You want to extract data from invoices but don't have AI Builder. The practical alternative for practice / low-volume work is:",
+    options: [
+      "Hire 10 interns",
+      "Use ChatGPT or Claude with a structured-extraction prompt and verify confidence; suitable for anonymised data only",
+      "Skip automation",
+      "Migrate to Oracle"
+    ],
+    correct: 1,
+    explain: "Public LLMs handle structured extraction well for anonymised samples. Not suitable for live high-volume production (Red List), but excellent for practice, prototyping, and low-volume cases where each document is reviewed by a human anyway."
+  },
+  {
+    q: "AI says it extracted the bank account number from an invoice and the digits are wrong by one. What's the implication?",
+    options: [
+      "Bank account fields are too risky to auto-extract; treat them as humans-only OR mask all but the last 4 digits to limit damage from extraction errors.",
+      "Trust the AI — it's usually right.",
+      "Run it twice and take the average.",
+      "Email the vendor."
+    ],
+    correct: 0,
+    explain: "Bank account fields are high-blast-radius — a one-digit error sends payment to the wrong account. Either treat as human-only, OR display only last 4 digits and force human verification against vendor master record. Never auto-route payments based on AI-extracted account numbers."
+  },
+  {
+    q: "Which document type is the BEST starting point for AI document reading in a Pakistani O&G operator?",
+    options: [
+      "Live JV agreements with foreign partners",
+      "Internal vendor invoices arriving as PDFs (high volume, structured, low individual risk, anonymisable for development)",
+      "Classified reservoir reports",
+      "BAFO negotiation transcripts"
+    ],
+    correct: 1,
+    explain: "Vendor invoices are the textbook starting use case: high volume (200-600/month), structured format, financial impact visible, easy to anonymise for development. Build the invoice intake pipeline first; the same architecture serves HSE forms and POs later."
+  },
+  {
+    q: "A red-flag detector in PO classification flags 'split procurement pattern' (multiple POs below approval threshold to same vendor in short time). What should it do?",
+    options: [
+      "Auto-block all POs to that vendor.",
+      "Surface the pattern to the Procurement Officer for review — never auto-block. The pattern may be innocent; the human decides.",
+      "Email the regulator.",
+      "Delete the POs."
+    ],
+    correct: 1,
+    explain: "AI surfaces patterns; humans decide. Auto-blocking on AI suspicion creates fraud-by-software risk. The right pattern: AI flags → Procurement Officer reviews → if fraud confirmed, escalate per policy. AI is your second pair of eyes, not your judge."
+  },
+  {
+    q: "What's the killer combined use case from Modules 02 + 03?",
+    options: [
+      "Auto-deleting old emails",
+      "Invoice arrives → saved → AI extracts → 3-way match → variance handling or approval routing → audit log — end-to-end with human-in-the-loop at the release",
+      "Posting on LinkedIn",
+      "Scheduling holidays"
+    ],
+    correct: 1,
+    explain: "End-to-end invoice processing is the textbook combined use case — and exactly the pattern Aramco, ADNOC, and Shell are deploying. Module 02 builds the plumbing; Module 03 adds the AI extraction; the result is 60-80% time saving with stronger audit trail than the manual process."
+  },
+  {
+    q: "Your AI Builder flow processes 1,000 invoices/month. Five of them this month resulted in payments to the wrong vendor because of extraction errors. What's the systemic fix?",
+    options: [
+      "Replace AI Builder with cheaper alternative.",
+      "Lower the confidence threshold for auto-routing; require human review at lower confidence; track precision/recall monthly; tune the prompt or model.",
+      "Manual review of all invoices.",
+      "Cancel automation."
+    ],
+    correct: 1,
+    explain: "Production AI requires ongoing measurement and tuning. Track error rate; if it rises, raise the confidence threshold (more humans-in-the-loop). Track which error modes occur; refine the prompt or training. AI automation isn't 'build and forget' — it's 'build, measure, improve' continuously."
+  }
+];
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+const quizEl = document.getElementById('quiz');
+const barEl = document.getElementById('bar');
+const resultsEl = document.getElementById('results');
+function render() {
+  if (current >= questions.length) { showResults(); return; }
+  const q = questions[current];
+  const selected = answers[current];
+  const answered = selected !== null;
+  quizEl.innerHTML = `<div class="question active">
+    <div class="q-meta">Question ${current + 1} of ${questions.length}</div>
+    <div class="q-text">${q.q}</div>
+    <ul class="options">${q.options.map((opt, i) => {
+      let cls = 'option';
+      if (answered) { cls += ' disabled'; if (i === q.correct) cls += ' correct'; else if (i === selected) cls += ' wrong'; }
+      else if (selected === i) cls += ' selected';
+      return `<li class="${cls}" onclick="pick(${i})">${String.fromCharCode(65 + i)}. ${opt}</li>`;
+    }).join('')}</ul>
+    ${answered ? `<div class="feedback ${selected === q.correct ? 'correct' : 'wrong'} show"><strong>${selected === q.correct ? '✓ Correct' : '✗ Not quite'}</strong>${q.explain}</div>` : ''}
+    <div class="nav">
+      <button class="secondary" onclick="prev()" ${current === 0 ? 'disabled' : ''}>← Previous</button>
+      <button onclick="next()" ${!answered ? 'disabled' : ''}>${current === questions.length - 1 ? 'See Results →' : 'Next →'}</button>
+    </div></div>`;
+  barEl.style.width = ((current + (answered ? 1 : 0)) / questions.length * 100) + '%';
+}
+function pick(i) { if (answers[current] !== null) return; answers[current] = i; render(); }
+function next() { if (answers[current] === null) return; current++; if (current >= questions.length) showResults(); else render(); }
+function prev() { if (current > 0) { current--; render(); } }
+function showResults() {
+  quizEl.style.display = 'none';
+  resultsEl.classList.add('show');
+  const score = answers.filter((a, i) => a === questions[i].correct).length;
+  const pct = Math.round(score / questions.length * 100);
+  document.getElementById('scorePct').textContent = pct + '%';
+  document.getElementById('scoreFrac').textContent = score + ' / ' + questions.length;
+  let verdict;
+  if (pct === 100) verdict = "Perfect — you understand both the power and the limits of AI document reading.";
+  else if (pct >= 80) verdict = "Strong — review the explanations and you're ready for real production work.";
+  else if (pct >= 60) verdict = "Solid — re-read Module 03 walkthroughs before building production extraction.";
+  else verdict = "Careful re-read needed — production AI document reading without these patterns risks costly errors.";
+  document.getElementById('verdictText').textContent = verdict;
+  document.getElementById('reviewList').innerHTML = questions.map((q, i) => {
+    const ok = answers[i] === q.correct;
+    return `<div class="review-item"><span class="review-mark">${ok ? '✓' : '✗'}</span><div><strong>Q${i+1}.</strong> ${q.q.substring(0, 90)}${q.q.length > 90 ? '…' : ''}</div></div>`;
+  }).join('');
+  barEl.style.width = '100%';
+}
+function restart() { current = 0; answers = new Array(questions.length).fill(null); quizEl.style.display = 'block'; resultsEl.classList.remove('show'); render(); }
+render();
+</script>
+</body>
+</html>

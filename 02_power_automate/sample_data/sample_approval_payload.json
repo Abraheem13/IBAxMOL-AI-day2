@@ -1,0 +1,36 @@
+{
+  "_comment": "Sample SharePoint item payload that triggers the Approval flow. Use as test input when manually triggering or designing test cases.",
+  "Title": "Stationery procurement — Q2 office supplies",
+  "Amount_PKR": 75000,
+  "Justification": "Quarterly office supplies for [DEPT-NAME]. Approved budget line code B-247. Three quotations attached. Lowest-evaluated bidder selected per PPRA Rule 21. Items include printer paper, toner cartridges, files, stationery basics.",
+  "Requestor_Email": "requestor.test@[operator].com.pk",
+  "Status": "Pending",
+  "Created_DateTime": "2026-05-14T09:14:00",
+  "Items_List": [
+    { "item": "A4 Paper (Reams)", "qty": 60, "unit_price": 750 },
+    { "item": "HP Toner Black", "qty": 4, "unit_price": 8500 },
+    { "item": "Files, Folders, Misc", "qty": 1, "unit_price": 4500 }
+  ],
+  "_expected_flow_behaviour": {
+    "step_1": "Manager approval (any amount) — auto-routed to Department Head",
+    "step_2": "Amount > 50,000 → Finance Manager approval ALSO required",
+    "step_3_approved": [
+      "SharePoint Status set to 'Approved'",
+      "Email to Requestor with confirmation",
+      "Teams channel post in #procurement-approvals",
+      "Audit list entry with timestamps and approver names"
+    ],
+    "step_3_rejected": [
+      "SharePoint Status set to 'Rejected'",
+      "Email to Requestor with rejection reason",
+      "Audit list entry"
+    ]
+  },
+  "_test_scenarios": [
+    "Scenario A: amount 10,000 — only Manager approval triggers",
+    "Scenario B: amount 75,000 — both Manager and Finance Manager approvals trigger",
+    "Scenario C: Manager rejects — flow stops, requestor notified",
+    "Scenario D: Manager approves but Finance rejects — flow stops, requestor notified",
+    "Scenario E: amount missing/zero — flow should handle gracefully (default reject or skip)"
+  ]
+}

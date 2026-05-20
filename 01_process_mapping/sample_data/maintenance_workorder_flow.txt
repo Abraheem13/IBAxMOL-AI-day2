@@ -1,0 +1,75 @@
+MAINTENANCE WORK-ORDER WORKFLOW
+========================================
+Scope: routine corrective maintenance (low-medium priority)
+Anonymised. Placeholders: [ASSET-X], [TECH-A], [VENDOR-Y].
+
+STEP 1 — Defect identification
+- Source: condition monitoring, operator report, inspection finding, predictive 
+  system alert.
+- Logged in CMMS as a notification.
+
+STEP 2 — Work-order creation
+- CMMS converts notification to a work order (WO).
+- WO fields: asset ID, problem description, priority, target completion.
+
+STEP 3 — Planner triage and categorisation
+- Maintenance Planner reviews; sets priority, work type (mechanical / electrical / 
+  instrumentation), required skills.
+- Assigns to Supervisor.
+- Friction: WO often sits in queue 1-3 days waiting for planner attention.
+
+STEP 4 — Resource and parts planning
+- Planner identifies: required parts, special tools, manpower hours, contractor needs.
+- Parts availability checked in SAP — frequently inaccurate vs actual stock.
+
+STEP 5 — Parts requisition
+- If parts not in stock: reservation or purchase requisition raised.
+- If urgent: emergency procurement (separate workflow, longer).
+
+STEP 6 — Permit-to-Work (PTW)
+- For hot work, confined space, electrical isolation, height work: PTW required.
+- Currently: paper form signed by HSE, Operations, Maintenance.
+- Multi-signature loop; often 1-3 days.
+
+STEP 7 — Job-safety analysis
+- JSA / risk assessment completed for the job.
+- Toolbox talk delivered to assigned crew.
+
+STEP 8 — Crew assignment
+- Supervisor assigns specific technicians and contractors.
+
+STEP 9 — Parts and tools collected from stores
+- Storeman issues; technician collects; signature in store register or scanner log.
+
+STEP 10 — Isolation and lockout-tagout
+- Operations isolates the equipment.
+- Technician applies lockout-tagout devices.
+
+STEP 11 — Execution
+- Job carried out per JSA.
+- Photos taken before/during/after.
+
+STEP 12 — Quality check
+- Maintenance Supervisor inspects completed work.
+- Functional test performed.
+
+STEP 13 — Return-to-service
+- Lockout-tagout removed.
+- Operations brings equipment back online.
+- Performance monitored for first 24-72 hours.
+
+STEP 14 — CMMS closure
+- Technician updates WO in CMMS: actual hours, parts used, observations, photos.
+- Friction: technicians often delay this entry; field data often missing or incomplete.
+
+STEP 15 — Reliability review
+- Reliability Engineer reviews completed WOs weekly.
+- Patterns flagged for root-cause review or preventive plan update.
+
+========================================
+PROCESS METRICS
+- Frequency: 80-200 routine WOs/month for medium operator
+- Avg cycle time (low priority): 5-12 days
+- Avg cycle time (high priority): 1-3 days
+- Permit-loop time often accounts for 30-50% of total cycle time
+- CMMS closure delays distort MTTR (mean time to repair) metric by 20-40%

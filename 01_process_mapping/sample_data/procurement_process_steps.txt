@@ -1,0 +1,97 @@
+PROCUREMENT PROCESS — Goods Purchase Request (PPRA Open Competition)
+=====================================================================
+Scope: routine technical goods, contract value within PPRA Rule 12-21 threshold
+Anonymised for training. Use placeholders [DEPT], [VENDOR-X], [ITEM-Y].
+
+STEP 1 — Requisition raised
+- Requesting Department prepares Purchase Requisition (PR) in SAP with: item code, 
+  quantity, estimated unit price, business justification, budget code.
+- Time: 20-40 minutes.
+- Friction: vendors and item codes not always up-to-date in SAP master data.
+
+STEP 2 — Department Head approval
+- PR routed to Department Head for endorsement.
+- SLA target: 48 hours.
+- Actual: 2-7 days. Frequent reminders needed.
+
+STEP 3 — Procurement Officer triage
+- Procurement Officer screens PR: technical-spec completeness, budget code validity, 
+  PPRA compliance threshold.
+- Time: 15-30 minutes per PR.
+- Returns to Department for revision if incomplete (rework loop frequency: ~30%).
+
+STEP 4 — Method-of-procurement decision
+- Procurement Officer determines: open competition / limited tendering / direct 
+  contracting (PPRA Rule 36).
+- Documentation: PPRA method justification memo prepared.
+
+STEP 5 — Tender preparation
+- Officer drafts the tender document: scope, technical specs, evaluation criteria, 
+  contract terms.
+- Time: 4-8 hours per tender.
+
+STEP 6 — Tender advertisement
+- Tender uploaded to PPRA portal + published in two daily newspapers (English + Urdu).
+- Submission window: minimum 15 days (per PPRA Rule 13).
+
+STEP 7 — Bid submission window
+- Bidders submit technical and financial bids (separate sealed envelopes).
+- Pre-bid clarification meeting often held mid-window.
+
+STEP 8 — Comparative statement preparation
+- Procurement Officer prepares technical evaluation table and financial comparison.
+- Time: 90 minutes to 4 hours depending on number of bidders.
+- Manually transcribed from bid documents to Excel.
+
+STEP 9 — Technical evaluation
+- Tender Committee meets to score technical bids against criteria.
+- Time: half-day meeting.
+- Pass-fail threshold typically 70/100.
+
+STEP 10 — Financial evaluation + award recommendation
+- Financial bids of technically-qualified bidders opened publicly.
+- Award recommendation drafted: lowest-evaluated responsive bidder.
+
+STEP 11 — Purchase Order generation
+- PO created in SAP with: vendor, item, quantity, unit price, total, delivery terms, 
+  payment terms, tax info.
+- PO emailed to vendor; read-receipt requested.
+- Friction: vendor acknowledgement chase if no read-receipt.
+
+STEP 12 — Vendor delivery commitment
+- Vendor confirms delivery date.
+- Sometimes requires advance payment (LC, advance against PO).
+
+STEP 13 — Goods receipt
+- Stores receives shipment; physical inspection vs PO.
+- Goods Receipt Note (GRN) created in SAP.
+
+STEP 14 — GRN cross-check
+- Procurement Officer or Stores verifies GRN vs PO: quantity, condition, dates.
+- Time: 30-60 minutes per GRN.
+- Discrepancies trigger vendor correspondence.
+
+STEP 15 — Invoice receipt from vendor
+- Vendor submits invoice with: PO ref, GRN ref, tax certificate.
+- Format varies: PDF, paper, email body.
+
+STEP 16 — Three-way match (PO + GRN + Invoice)
+- Procurement / Finance jointly verify amounts, line items, tax handling.
+- Time: 60 minutes per invoice.
+- Variances paused for resolution.
+
+STEP 17 — Payment approval
+- Budget Holder + Finance Manager sign off; release to Treasury for payment.
+
+STEP 18 — Payment release
+- Treasury releases payment per terms (typically 30-90 days from invoice).
+- Vendor remittance advice sent.
+- GL posting completed.
+
+=====================================================================
+PROCESS METRICS (typical for medium operator)
+- Total cycle time: 45-90 days from PR to payment
+- Frequency: 80-150 routine POs per month
+- Human-hour cost per PO: 12-18 hours across all roles
+- Rework rate: ~25% of PRs returned at Step 3
+- Manager-approval-delay percentage of total cycle time: ~30%

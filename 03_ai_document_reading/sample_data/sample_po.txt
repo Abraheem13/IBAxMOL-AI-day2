@@ -1,0 +1,83 @@
+═════════════════════════════════════════════════════════════════
+                    PURCHASE ORDER
+═════════════════════════════════════════════════════════════════
+
+PO NUMBER:         PO-2026-1342
+PO DATE:           12 May 2026
+DELIVERY DATE:     19 May 2026 (URGENT — expedited)
+
+═════════════════════════════════════════════════════════════════
+BUYER:
+
+[OPERATOR-PK] Limited
+Procurement Department
+[SITE-LOCATION]
+
+═════════════════════════════════════════════════════════════════
+SUPPLIER:
+
+[VENDOR-Z] Industrial Supplies (Pvt) Ltd.
+NTN: 2345678-9 · STRN: 0823456-78901-2
+Address: [CITY], Pakistan
+
+═════════════════════════════════════════════════════════════════
+PROCUREMENT METHOD:    Limited Tendering (PPRA Rule 18)
+NUMBER OF QUOTATIONS:  3 received
+SUCCESSFUL BIDDER:     [VENDOR-Z] — lowest evaluated responsive
+JUSTIFICATION:         Operational urgency — replacement parts for 
+                       critical rotating equipment under preventive 
+                       maintenance plan; failure mode identified 
+                       during last inspection cycle.
+
+═════════════════════════════════════════════════════════════════
+LINE ITEMS:
+─────────────────────────────────────────────────────────────────
+# | SAP CODE  | DESCRIPTION                       | QTY | UNIT PRICE | TOTAL
+─────────────────────────────────────────────────────────────────
+1 | M-4471-22 | Mechanical seal — pump P-203      |  2  | 145,000.00 | 290,000.00
+─────────────────────────────────────────────────────────────────
+2 | M-4471-23 | Mechanical seal — pump P-204      |  2  | 145,000.00 | 290,000.00
+─────────────────────────────────────────────────────────────────
+3 | E-3382-11 | Coupling — pump P-203/P-204       |  4  |  62,500.00 | 250,000.00
+─────────────────────────────────────────────────────────────────
+4 | M-5612-09 | Bearing set — 6312 (SKF or equiv) |  8  |  18,750.00 | 150,000.00
+─────────────────────────────────────────────────────────────────
+
+═════════════════════════════════════════════════════════════════
+                              SUBTOTAL:      PKR 980,000.00
+                              SALES TAX (17%): PKR 166,600.00
+                              ─────────────────────────────
+                              TOTAL ORDER:   PKR 1,146,600.00
+═════════════════════════════════════════════════════════════════
+
+DELIVERY TERMS:    EXW Karachi; freight by buyer
+PAYMENT TERMS:     30 days from acceptance of goods
+INSPECTION:        Buyer's QA at receipt
+WARRANTY:          12 months from commissioning
+INCOTERMS:         EXW
+
+═════════════════════════════════════════════════════════════════
+APPROVALS:
+
+Procurement Officer:   [NAME] / 12 May 2026
+Department Head (Maintenance): [NAME] / 12 May 2026
+Finance Manager:       [NAME] / 12 May 2026
+Director (Operations): [NAME] / pending
+
+═════════════════════════════════════════════════════════════════
+TERMS & CONDITIONS:
+
+1. Goods to be supplied per technical specifications attached as Annex-1
+2. Late delivery penalty: 0.5% per day, max 5% of order value
+3. Quality acceptance: per buyer's inspection and test plan
+4. Disputes: amicable settlement, otherwise Pakistani courts
+5. Confidentiality: standard PO confidentiality applies
+
+═════════════════════════════════════════════════════════════════
+
+NOTES:
+- This is a fictional, anonymised PO for classification practice.
+- Annex-1 (technical specifications) referenced but not included in sample.
+- Use for Power Automate / AI classification exercise.
+
+═════════════════════════════════════════════════════════════════
